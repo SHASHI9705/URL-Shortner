@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+  </head>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: rgb(10, 6, 43);
+    }
+
+    h1{
+      font-size: 40px;
+      color: white;
+    }
+    .signuphead{
+      margin-left: auto;
+      margin-right: auto;
+      width: fit-content;
+      box-shadow: 0 0 4px white;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 10px;
+      background-color: rgb(53, 42, 32);
+      box-shadow: 0 0 4px solid white;
+    }
+    form{
+      background-color: rgb(185, 185, 166);
+      width: fit-content;
+      height: 10rem;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 70px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    input{
+      margin-top: 20px;
+    }
+    button{
+      margin-top: 10px;
+      cursor: pointer;
+      
+    }
+
+  </style>
+  <body>
+    <div class="signuphead">
+      <h1>Signup Portal</h1>
+    </div>
+    
+    <form action="/user" method="post">
+      <input type="text" required name="name"  placeholder="Full name"/><br>
+      <input type="text" required name="email" placeholder="Email"/><br>
+      <input type="text" required name="password" placeholder="Password"/><br>
+      <button type="submit">Signup</button>
+    </form>
+  </body>
+</html>

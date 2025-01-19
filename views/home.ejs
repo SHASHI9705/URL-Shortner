@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background-color: rgb(65, 135, 21);
+    }
+    h1 {
+      background-color: aqua;
+      box-shadow: 0 0 4px black;
+      width: 17rem;
+      border-radius: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    label {
+      font-family: "Times New Roman", Times, serif;
+    }
+    .url {
+      height: 5rem;
+      margin-top: 20px;
+    }
+    input {
+      height: 1.5rem;
+      border-radius: 10px;
+      border: 2px solid rgb(0, 0, 90);
+      margin-top: 7px;
+      box-shadow: 0 0 4px white;
+    }
+    button {
+      height: 1.5rem;
+      border-radius: 10px;
+      border: 4px solid black;
+      margin-top: 7px;
+      cursor: pointer;
+    }
+    .urlgen {
+      background-color: black;
+      border: 1px solid black;
+      border-radius: 4px;
+      color: white;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 4px;
+    }
+
+    input::placeholder {
+      font-style: italic;
+    }
+    table,
+    th,
+    td {
+      border: 2px solid black;
+      border-collapse: collapse;
+    }
+    table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    td,
+    th {
+      padding: 10px;
+    }
+    .Usage{
+      background-color: rgb(92, 67, 12);
+      width: fit-content;
+      padding: 5px;
+      border-radius: 7px;
+      font-size: 20px;
+      color: white;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 7px white;
+    }
+  </style>
+  <body>
+    <h1>URL Shortener</h1>
+
+    <div class="url">
+      <form method="POST" action="/url">
+        <label>Enter Your Original URL Below</label><br />
+        <input type="text" name="url" placeholder="https://example.com" />
+        <button type="submit">Generate</button>
+      </form>
+    </div>
+    <% if (locals.id) { %>
+    <p class="urlgen"><a href="http://localhost:8001/url/<%= id %>" target="_blank">Generated Link</a> with short ID : <%= id %></p>
+    <% } %>
+    
+    <% if (locals.urls) { %>
+      <div>
+        <h2>Data of all recent URL:</h2>
+        <table>
+          <thead>
+            <th>S.no</th>
+            <th>Short-ID</th>
+            <th>Redirect-URL</th>
+            <th>Clicks</th>
+          </thead>
+          <tbody>
+            <% urls.forEach((url,index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= url.shortID %></td>
+              <td><%= url.redirectURL %></td>
+              <td><%= url.visitHistory.length %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <h4 class="Usage">Usage: http://localhost:8001/url/Short-ID </h4>
+      </div>
+    <% } %>
+
+  </body>
+</html>
